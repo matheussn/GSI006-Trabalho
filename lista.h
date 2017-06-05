@@ -1,3 +1,22 @@
+struct item
+{
+	int i;
+	char *nome;
+	struct item *proxItem;
+};
+
+typedef struct item Item;
+
+
+struct lista
+{
+	char *lb;
+	struct item *primeroItem;
+	struct lista *proxLista;
+};
+
+typedef struct lista Lista;
+
 // count
 // -----
 // Return the quantity of items in l;
@@ -60,3 +79,10 @@ char * label (void *l);
 // Return l; or return NULL, if l was not found.
 
 void * showAll (void *l);
+
+// showDir
+// -------
+// Present all lists in the directory and the respective
+// number of items in each list.
+
+void showDir();

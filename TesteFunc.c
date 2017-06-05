@@ -109,7 +109,7 @@ create (char *s)
 			}
 
         no = no->proxLista;
-        }
+      }
 
 		aux =(Lista*) malloc (sizeof(Lista));
 		aux->lb = s;

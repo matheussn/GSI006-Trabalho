@@ -1,3 +1,12 @@
+/*
+	Este arquivo implementa as funções especificadas no arquivo lista.h
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "lista.h"
+
 // count
 // -----
 // Return the quantity of items in l;
@@ -89,6 +98,17 @@ label (void *l)
 
 void *
 showAll (void *l)
+{
+
+}
+
+// showDir
+// -------
+// Present all lists in the directory and the respective
+// number of items in each list.
+
+void
+showDir()
 {
 
 }
