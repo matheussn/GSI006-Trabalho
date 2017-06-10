@@ -1,3 +1,5 @@
+
+
 struct item
 {
 	int i;
@@ -11,11 +13,14 @@ typedef struct item Item;
 struct lista
 {
 	char *lb;
+	int qd;
 	struct item *primeroItem;
 	struct lista *proxLista;
 };
 
 typedef struct lista Lista;
+
+
 
 // count
 // -----
@@ -31,6 +36,7 @@ int count (void * l);
 // or return NULL, if the list was not created
 
 void * create (char *s);
+	
 
 
 // destroy
