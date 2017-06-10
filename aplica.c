@@ -21,7 +21,7 @@ main ()
 		return -15;
 	}
 
-	printf("Digite uma operacao.\n");
+	
 	while(EOF)
     	{
 		rl = (char*) malloc(MAXDESCR);
@@ -31,6 +31,7 @@ main ()
 		return -15;
 		}
 		
+	printf("Digite uma operacao.\n");
         setbuf(stdin,NULL);
         scanf("%c %s %d %s", &fn, rl, &c1, c2);
         switch(fn)
@@ -41,7 +42,7 @@ main ()
                 	fprintf (stderr, "Erro ao criar a lista %s\n",rl);
 				
 		else
-			printf("Lista %s criada com sucesso!\n", rl);
+			printf("\nLista %s criada com sucesso!\n", rl);
 			
             break;
 
