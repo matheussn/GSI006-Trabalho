@@ -4,8 +4,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "lista.h"
+
+Lista *DIR = NULL;
 
 // count
 // -----
@@ -27,7 +30,31 @@ count (void * l)
 void *
 create (char *s)
 {
+	Lista *aux;
 	
+	aux = idl (s);
+	if (aux != NULL)
+		return NULL; // Lista com nome repetido
+	
+	aux = (Lista *) malloc (sizeof(Lista));
+	
+	if(DIR == NULL)// Diretório vazio
+	{
+		aux->lb = s;
+		aux->proxLista = NULL;
+		aux->primeroItem = NULL;
+		aux->qd = 0;
+		DIR = aux;
+	}
+	else // Diretório com pelomenos uma lista
+	{
+		aux->lb = s;
+		aux->proxLista = DIR;
+		aux->primeroItem = NULL;
+		aux->qd = 0;
+		DIR = aux;
+	}
+	return aux;
 }
 
 
@@ -63,7 +90,18 @@ find (void *l, int m)
 void *
 idl (char *s)
 {
-
+	Lista *aux = DIR;
+	
+	while(aux != NULL)
+	{
+		if(strcmp(aux->lb,s) == 0)
+			return aux;
+		
+		else
+			aux = aux->proxLista;	
+	}
+	
+	return NULL;
 }
 
 
@@ -110,5 +148,12 @@ showAll (void *l)
 void
 showDir()
 {
-
+	Lista *aux = DIR;
+	
+	while(aux != NULL)
+	{
+		printf("Lista: %s Quantidade: %d\n", aux->lb, aux->qd);
+		aux = aux->proxLista;
+	}
+	
 }
