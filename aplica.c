@@ -26,10 +26,10 @@ main ()
     	{
 		rl = (char*) malloc(MAXDESCR);
 		if(rl == NULL)
-        {
+        	{
 		fprintf (stderr, "Erro na alocacao de rl");
 		return -15;
-	}
+		}
 		
         setbuf(stdin,NULL);
         scanf("%c %s %d %s", &fn, rl, &c1, c2);
@@ -38,7 +38,7 @@ main ()
             case 'c' :
                 dir = create(rl);
                 if(dir == NULL)
-                	fprintf (stderr, "Erro ao criar a lista %s",rl);
+                	fprintf (stderr, "Erro ao criar a lista %s\n",rl);
 				
 		else
 			printf("Lista %s criada com sucesso!\n", rl);
