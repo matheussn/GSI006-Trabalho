@@ -150,6 +150,11 @@ showDir()
 {
 	Lista *aux = DIR;
 	
+	if(aux==NULL)
+	{
+		fprintf(stderr, "erro: Nao ha nenhuma lista no diretorio.\n");
+	}
+
 	while(aux != NULL)
 	{
 		printf("Lista: %s Quantidade: %d\n", aux->lb, aux->qd);
