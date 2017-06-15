@@ -15,10 +15,9 @@ main ()
 	
 	Lista *dir;
 
-	printf("Digite uma operacao.\n");
 	setbuf(stdin,NULL);
 	
-	while(scanf("%c ", &fn) != EOF)
+	while(scanf("%c", &fn) != EOF)
 	{
 		c2 = (char *) malloc(MAXDESCR);
 		if(c2 == NULL)
@@ -28,13 +27,13 @@ main ()
 		}
 
 		rl = (char *) malloc(MAXDESCR);
-		if(c2 == NULL)
+		if(rl == NULL)
 		{
-			fprintf (stderr, "Erro na alocacao de c2");
+			fprintf (stderr, "Erro na alocacao de rl");
 			return -15;
 		}
 
-		scanf("%s %d %s", rl, &c1, c2);
+		scanf("%s %d %s ", rl, &c1, c2);
 
 		switch(fn)
 		{
@@ -53,7 +52,6 @@ main ()
 				fprintf (stderr,"Funcao invalida!\n");
 		}
 
-		printf("Digite uma operacao.\n");
 		setbuf(stdin,NULL);
 	}
 
