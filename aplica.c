@@ -8,32 +8,34 @@
 int
 main ()
 {
-	char fn; //Uma letra que representa uma das funções
-	char *rl; //Rótulo da lista.
-	int c1; //Um número.
-	char *c2; //cadeia de caracteres
+	char fn;  // Caractere que representa as funções.
+	char *rl; // Rótulo da lista.
+	char *c2; // nome do item da lista.
+	int c1;   // Id do item da lista.
+	
 	Lista *dir;
 
-	c2= (char*) malloc(MAXDESCR);
-	if(rl == NULL)
-	{
-		fprintf (stderr, "Erro na alocacao de c2");
-		return -15;
-	}
+	printf("Digite uma operacao.\n");
+	setbuf(stdin,NULL);
 	
-	while(EOF)
+	while(scanf("%c ", &fn) != EOF)
 	{
-		rl = (char*) malloc(MAXDESCR);
-		if(rl == NULL)
+		c2 = (char *) malloc(MAXDESCR);
+		if(c2 == NULL)
 		{
-			fprintf (stderr, "Erro na alocacao de rl");
+			fprintf (stderr, "Erro na alocacao de c2");
 			return -15;
 		}
-		
-		printf("Digite uma operacao.\n");
-		setbuf(stdin,NULL);
-		scanf("%c %s %d %s", &fn, rl, &c1, c2);
-		
+
+		rl = (char *) malloc(MAXDESCR);
+		if(c2 == NULL)
+		{
+			fprintf (stderr, "Erro na alocacao de c2");
+			return -15;
+		}
+
+		scanf("%s %d %s", rl, &c1, c2);
+
 		switch(fn)
 		{
 			case 'c' :
@@ -50,6 +52,9 @@ main ()
 			default :
 				fprintf (stderr,"Funcao invalida!\n");
 		}
+
+		printf("Digite uma operacao.\n");
+		setbuf(stdin,NULL);
 	}
 
 	return 0;
