@@ -1,5 +1,3 @@
-
-
 struct item
 {
 	int i;
@@ -21,7 +19,6 @@ struct lista
 typedef struct lista Lista;
 
 
-
 // count
 // -----
 // Return the quantity of items in l;
@@ -36,7 +33,6 @@ int count (void * l);
 // or return NULL, if the list was not created
 
 void * create (char *s);
-	
 
 
 // destroy
