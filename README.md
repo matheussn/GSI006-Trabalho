@@ -1,26 +1,24 @@
-Trabalho da matÃ©ria GSI006 - Estrutura de dados 1, sobre lista encadeada em C 
+Trabalho da matéria GSI006 - Estrutura de dados 1, sobre lista encadeada em C 
 
 
 Alunos:
-***Guilherme Eustaquio Moreira Santana** 
-InscriÃ§Ã£o: 11621BSI229
+***Guilherme Eustaquio Moreira Santana**
+Inscrição: 11621BSI229
 ***Matheus Santiago Neto** 
-InscriÃ§Ã£o: 11621BSI252 
+Inscrição: 11621BSI252 
 ***Rodrigo Souza Rezende** 
-InscriÃ§Ã£o: 11621BSI245 
+Inscrição: 11621BSI245 
 
 Como utilizar:
 
-No momento, as funÃ§Ãµes disponÃ­veis do software sÃ£o: create(char *s), id1(char *s) e showDir().
+No momento, as funções disponíveis do software são: create(char *s), id1(char *s) e showDir().
 
-create(char *s): A funÃ§Ã£o retorna NULL se a Lista estiver com um nome repetido ou, caso contrÃ¡rio, retorna o ponteiro para a lista criada, cujo rÃ³tulo Ã© s.
+create(char *s): A função retorna NULL se a Lista estiver com um nome repetido ou, caso contrário, retorna o ponteiro para a lista criada, cujo rótulo é s.
 
-showDir(): A funÃ§Ã£o mostra todas as listas presentes no diretÃ³rio. Em caso
-de nÃ£o houver nenhuma lista, uma mensagem de erro aparecerÃ¡.
+showDir(): A função mostra todas as listas presentes no diretório. Em caso
+de não houver nenhuma lista, uma mensagem de erro aparecerá.
 
-id1(char *s): A funÃ§Ã£o tem o objetivo de obter em qual parte
-do diretÃ³rio estÃ¡ a lista que possui o rÃ³tulo s. Se encontrado, retorna
-o ponteiro para a lista de itens cujo rÃ³tulo Ã© s. Caso contrÃ¡rio, retorna-se
+id1(char *s): A função tem o objetivo de obter em qual parte
+do diretório está a lista que possui o rótulo s. Se encontrado, retorna
+o ponteiro para a lista de itens cujo rótulo é s. Caso contrário, retorna-se
 NULL.
-
-
