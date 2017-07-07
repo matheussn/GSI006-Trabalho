@@ -7,27 +7,39 @@
 #include <string.h>
 #include "lista.h"
 
-struct diretorio
+
+// === declaracoes ===
+
+struct le
+{
+    Item m;
+    struct le *prox;
+};
+
+typedef struct le LE;
+
+struct d
 {
 	char *lb;
 	int qd;
-	struct item *primeroItem;
-	struct lista *proxLista;
+	Item *primeroItem;
+	struct le *prox;
 };
 
-typedef struct diretorio Dir;
+typedef struct d Dir;
 
-struct lista
+struct c
 {
-    Item m;
-    struct lista *prox;
+	struct d *p;
+	struct d *u;
 };
 
-typedef struct diretorio Lista;
+typedef struct c Con;
 
-//Globais
-    Dir *DIR = NULL;
-    Lista *L = NULL;
+// === globais ===
+	Con *C 	= NULL;		// Controle do Diretorio
+	Dir *DIR = NULL;		// Diretorio de itens
+	LE  *L 	= NULL;		// Lista de itens
 
 
 // count
@@ -38,14 +50,12 @@ typedef struct diretorio Lista;
 int
 count (void * l)
 {
-    Dir *aux;
+	Dir *aux = (Dir *) l;
 
-	aux = idl (l);
 	if (aux == NULL)
 		return -1;
 
-    return aux->qd;
-
+	return aux->qd;
 }
 
 
@@ -59,25 +69,22 @@ create (char *s)
 {
 	Dir *aux;
 
-	aux = idl (s);
-	if (aux != NULL)
+	if (idl(s) != NULL)
 		return NULL; // Lista com nome repetido
 
 	aux = (Dir *) malloc (sizeof(Dir));
 
-    aux->lb = s;
-    aux->qd = 0;
-    aux->proxLista = NULL;
-    aux->primeroItem = NULL;
+	aux->lb = s;
+	aux->qd = 0;
+	aux->prox = NULL;
+	aux->primeroItem = NULL;
 
+	if(C == NULL)	//Diretorio vazio
+		DIR = C->p = C->u = aux;
+	else 				//Diretorio cheio
+		C->u->prox = C->u = aux;
 
-	if(DIR == NULL)// Diretório vazio
-		DIR = aux;
-
-	else // Diretório com pelomenos uma lista
-		DIR->proxLista = aux;
-
-	return aux;
+	return DIR;
 }
 
 
@@ -113,7 +120,7 @@ find (void *l, int m)
 void *
 idl (char *s)
 {
-	Lista *aux = DIR;
+	Dir *aux = DIR;
 
 	while(aux != NULL)
 	{
