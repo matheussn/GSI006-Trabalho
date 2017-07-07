@@ -12,11 +12,11 @@ main ()
 	char *rl; // Rótulo da lista.
 	char *c2; // nome do item da lista.
 	int c1;   // Id do item da lista.
-	
-	Lista *dir;
+
+	void *dir;
 
 	setbuf(stdin,NULL);
-	
+
 	while(scanf("%c ", &fn) != EOF)
 	{
 		c2 = (char *) malloc(MAXDESCR);
@@ -43,11 +43,24 @@ main ()
 					fprintf (stderr, "Erro ao criar a lista %s\n",rl);
 				else
 					printf("\nLista %s criada com sucesso!\n", rl);
-			
+
 				break;
+				
 			case 's' :
 				showDir();
 				break;
+				
+            case 'w' :
+                c1 = count (rl);
+
+                if(c1 == -1)
+                    fprintf (stderr, "Lista %s nao existe.\n",rl);
+
+                else
+                    printf("Quantidade de itens na lista %s: %d", rl, c1);
+
+                break;
+                
 			default :
 				fprintf (stderr,"Funcao invalida!\n");
 		}
@@ -57,3 +70,4 @@ main ()
 
 	return 0;
 }
+
