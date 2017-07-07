@@ -1,22 +1,11 @@
+
 struct item
 {
 	int i;
 	char *nome;
-	struct item *proxItem;
 };
 
 typedef struct item Item;
-
-
-struct lista
-{
-	char *lb;
-	int qd;
-	struct item *primeroItem;
-	struct lista *proxLista;
-};
-
-typedef struct lista Lista;
 
 
 // count
@@ -48,7 +37,7 @@ void * destroy (void *l);
 // Return a pointer to the item whose id is m;
 // or return NULL, if no item with id m was found.
 
-Item * find (void *l, int m);
+//Item * find (void *l, int m);
 
 
 // idl
@@ -65,7 +54,7 @@ void * idl (char *s);
 // either l was not found or space for m was not allocated.
 // m is inserted into l in ascending order.
 
-void * insert (void *l, Item m);
+//void * insert (void *l, Item m);
 
 
 // label
