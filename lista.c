@@ -5,10 +5,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include "lista.h"
 
-Lista *DIR = NULL;
+struct diretorio
+{
+	char *lb;
+	int qd;
+	struct item *primeroItem;
+	struct lista *proxLista;
+};
+
+typedef struct diretorio Dir;
+
+struct lista
+{
+    Item m;
+    struct lista *prox;
+};
+
+typedef struct diretorio Lista;
+
+//Globais
+    Dir *DIR = NULL;
+    Lista *L = NULL;
+
 
 // count
 // -----
@@ -18,6 +38,13 @@ Lista *DIR = NULL;
 int
 count (void * l)
 {
+    Dir *aux;
+
+	aux = idl (l);
+	if (aux == NULL)
+		return -1;
+
+    return aux->qd;
 
 }
 
@@ -30,30 +57,26 @@ count (void * l)
 void *
 create (char *s)
 {
-	Lista *aux;
-	
+	Dir *aux;
+
 	aux = idl (s);
 	if (aux != NULL)
 		return NULL; // Lista com nome repetido
-	
-	aux = (Lista *) malloc (sizeof(Lista));
-	
+
+	aux = (Dir *) malloc (sizeof(Dir));
+
+    aux->lb = s;
+    aux->qd = 0;
+    aux->proxLista = NULL;
+    aux->primeroItem = NULL;
+
+
 	if(DIR == NULL)// Diretório vazio
-	{
-		aux->lb = s;
-		aux->proxLista = NULL;
-		aux->primeroItem = NULL;
-		aux->qd = 0;
 		DIR = aux;
-	}
+
 	else // Diretório com pelomenos uma lista
-	{
-		aux->lb = s;
-		aux->proxLista = DIR;
-		aux->primeroItem = NULL;
-		aux->qd = 0;
-		DIR = aux;
-	}
+		DIR->proxLista = aux;
+
 	return aux;
 }
 
@@ -63,7 +86,7 @@ create (char *s)
 // Return NULL if l was destroyed; return l otherwise.
 // Destroying l implies in deallocating all nodes of l.
 
-void * 
+void *
 destroy (void *l)
 {
 
@@ -78,7 +101,7 @@ destroy (void *l)
 Item *
 find (void *l, int m)
 {
-	
+
 }
 
 
@@ -91,16 +114,16 @@ void *
 idl (char *s)
 {
 	Lista *aux = DIR;
-	
+
 	while(aux != NULL)
 	{
 		if(strcmp(aux->lb,s) == 0)
 			return aux;
-		
+
 		else
-			aux = aux->proxLista;	
+			aux = aux->proxLista;
 	}
-	
+
 	return NULL;
 }
 
@@ -149,7 +172,7 @@ void
 showDir()
 {
 	Lista *aux = DIR;
-	
+
 	if(aux==NULL)
 	{
 		fprintf(stderr, "erro: Nao ha nenhuma lista no diretorio.\n");
@@ -160,5 +183,5 @@ showDir()
 		printf("Lista: %s Quantidade: %d\n", aux->lb, aux->qd);
 		aux = aux->proxLista;
 	}
-	
+
 }
