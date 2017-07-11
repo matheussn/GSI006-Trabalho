@@ -22,8 +22,8 @@ struct d
 {
 	char *lb;
 	int qd;
-	Item *primeroItem;
-	struct le *prox;
+	LE *primeroItem;
+	struct d *prox;
 };
 
 typedef struct d Dir;
@@ -133,7 +133,7 @@ idl (char *s)
 			return aux;
 
 		else
-			aux = aux->proxLista;
+			aux = aux->prox;
 	}
 
 	return NULL;
@@ -183,7 +183,7 @@ showAll (void *l)
 void
 showDir()
 {
-	Lista *aux = DIR;
+	Dir *aux = DIR;
 
 	if(aux==NULL)
 	{
@@ -193,7 +193,7 @@ showDir()
 	while(aux != NULL)
 	{
 		printf("Lista: %s Quantidade: %d\n", aux->lb, aux->qd);
-		aux = aux->proxLista;
+		aux = aux->prox;
 	}
 
 }
