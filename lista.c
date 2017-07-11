@@ -50,8 +50,9 @@ typedef struct c Con;
 int
 count (void * l)
 {
-	Dir *aux = (Dir *) l;
+	Dir *aux;
 
+	aux = idl (l);
 	if (aux == NULL)
 		return -1;
 
@@ -70,8 +71,10 @@ create (char *s)
 	Dir *aux;
 
 	if (idl(s) != NULL)
+	{
+		fprintf(stderr, "Erro: Ja existe uma lista com o nome %s\n", s);
 		return NULL; // Lista com nome repetido
-
+	}
 	aux = (Dir *) malloc (sizeof(Dir));
 
 	aux->lb = s;
@@ -83,6 +86,8 @@ create (char *s)
 		DIR = C->p = C->u = aux;
 	else 				//Diretorio cheio
 		C->u->prox = C->u = aux;
+
+	fprintf(stdout, "Lista %s criada com sucesso!\n", s);
 
 	return DIR;
 }
