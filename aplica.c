@@ -15,9 +15,7 @@ main ()
 
 	void *dir;
 
-	setbuf(stdin,NULL);
-
-	while(scanf("%c ", &fn) != EOF)
+	while(!feof(stdin))
 	{
 		c2 = (char *) malloc(MAXDESCR);
 		if(c2 == NULL)
@@ -33,7 +31,7 @@ main ()
 			return -15;
 		}
 
-		scanf(" %s %d %s", rl, &c1, c2);
+		scanf("%c %s %d %s", &fn, rl, &c1, c2);
 
 		switch(fn)
 		{
@@ -45,11 +43,11 @@ main ()
 					printf("\nLista %s criada com sucesso!\n", rl);
 
 				break;
-				
+
 			case 's' :
 				showDir();
 				break;
-				
+
             case 'w' :
                 c1 = count (rl);
 
@@ -60,9 +58,10 @@ main ()
                     printf("Quantidade de itens na lista %s: %d", rl, c1);
 
                 break;
-                
+
 			default :
 				fprintf (stderr,"Funcao invalida!\n");
+				break;
 		}
 
 		setbuf(stdin,NULL);

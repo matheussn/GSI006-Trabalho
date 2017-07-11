@@ -37,7 +37,7 @@ struct c
 typedef struct c Con;
 
 // === globais ===
-	Con *C 	= NULL;		// Controle do Diretorio
+	Con C;		// Controle do Diretorio
 	Dir *DIR = NULL;		// Diretorio de itens
 	LE  *L 	= NULL;		// Lista de itens
 
@@ -71,23 +71,22 @@ create (char *s)
 	Dir *aux;
 
 	if (idl(s) != NULL)
-	{
-		fprintf(stderr, "Erro: Ja existe uma lista com o nome %s\n", s);
 		return NULL; // Lista com nome repetido
-	}
+
 	aux = (Dir *) malloc (sizeof(Dir));
+
+    if(aux == NULL)
+        return NULL;
 
 	aux->lb = s;
 	aux->qd = 0;
 	aux->prox = NULL;
 	aux->primeroItem = NULL;
 
-	if(C == NULL)	//Diretorio vazio
-		DIR = C->p = C->u = aux;
+	if(DIR == NULL)	//Diretorio vazio
+		DIR = C.p = C.u = aux;
 	else 				//Diretorio cheio
-		C->u->prox = C->u = aux;
-
-	fprintf(stdout, "Lista %s criada com sucesso!\n", s);
+		C.u->prox = C.u = aux;
 
 	return DIR;
 }
