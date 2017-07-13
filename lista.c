@@ -37,7 +37,7 @@ struct d
 typedef struct d Dir;
 
 // === globais ===
-	Dir D;						// Diretorio
+	Dir D;					// Diretorio
 	Lista *L = NULL;		// Lista
 	ItemL *I   = NULL;		// Itens
 
@@ -148,9 +148,47 @@ idl (char *s)
 void *
 insert (void *l, Item m)
 {
+    Lista *li = (Lista *)l;
+    ItemL *aux = NULL;
+    ItemL *t;    // ponteiro item corrente
+    ItemL *a;    // ponteiro item anterior
+
+    aux = (ItemL*) malloc(sizeof(ItemL));
+        if (aux == NULL)
+        return NULL;
+
+    aux->m.id = m.id;
+    aux->m.nome = m.nome;
+
+    for(a = t = li->primeroItem; t != NULL; t = t->prox)
+    {
+        if(t->m.id < aux->m.id)
+            a = t;
+        else
+            break;
+    }
+
+    if(a == NULL)
+    { //lista vazia
+        aux->prox = NULL;
+        li->primeroItem = aux;
+    }
+    else if(a == t)
+    {
+        aux->prox = li->primeroItem;
+        li->primeroItem = aux;
+    }
+    else
+    {
+      aux->prox = t;
+      a->prox = aux;
+    }
+
+    li->qd++;
+
+    return li;
 
 }
-
 
 // label
 // -----
@@ -171,7 +209,19 @@ label (void *l)
 void *
 showAll (void *l)
 {
+	Lista *aux = (void *)l;
+	ItemL *auxL = aux->primeroItem;
 
+	if(auxL == NULL)
+	{
+		fprintf(stderr, "erro: Nao ha nenhuma lista no diretorio.\n");
+	}
+
+	while(auxL != NULL)
+	{
+		printf("Id: %d Item: %s\n", auxL->m.id, auxL->m.nome);
+		auxL = auxL->prox;
+	}
 }
 
 // showDir
@@ -182,7 +232,7 @@ showAll (void *l)
 void
 showDir()
 {
-	Lista *aux = D;
+	Lista *aux = L;
 
 	if(aux==NULL)
 	{
