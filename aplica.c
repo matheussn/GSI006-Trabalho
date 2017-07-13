@@ -14,6 +14,7 @@ main ()
 	int c1;   // Id do item da lista.
 
 	void *dir;
+	Item m;
 
 	while(!feof(stdin))
 	{
@@ -41,22 +42,55 @@ main ()
 					fprintf (stderr, "Erro ao criar a lista %s\n",rl);
 				else
 					printf("\nLista %s criada com sucesso!\n", rl);
+                free(c2);
 
 				break;
 
 			case 's' :
 				showDir();
-				break;
+                free(rl);
+                free(c2);
+                break;
 
-            case 'w' :
-                c1 = count (rl);
+            case 'u' :
+                dir = idl(rl);
 
-                if(c1 == -1)
+                if(dir == NULL)
+                {
                     fprintf (stderr, "Lista %s nao existe.\n",rl);
+                    break;
+                }
 
                 else
                     printf("Quantidade de itens na lista %s: %d", rl, c1);
 
+                free(rl);
+                free(c2);
+                break;
+
+            case 'i' :
+                dir = idl(rl);
+                if(dir == NULL)
+                {
+                    fprintf (stderr,"Lista %s nao existe.\n",rl);
+                    break;
+                }
+                m.id = c1;
+                m.nome = c2;
+                dir = insert(dir,m);
+                free(rl);
+                break;
+
+            case 'w' :
+                dir = idl(rl);
+                if(dir == NULL)
+                {
+                    fprintf (stderr,"Lista %s nao existe.\n",rl);
+                    break;
+                }
+                showAll(dir);
+                free(rl);
+                free(c2);
                 break;
 
 			default :
@@ -69,4 +103,6 @@ main ()
 
 	return 0;
 }
+
+
 
