@@ -112,6 +112,18 @@ destroy (void *l)
 Item *
 find (void *l, int m)
 {
+	Lista *aux;
+
+	aux = (Lista*)l;
+
+	while(aux!=NULL)
+	{
+		if(aux->primeroItem->m.id==m)
+		{
+			printf("retorna");
+		}
+			aux->primeroItem = aux->primeroItem->prox;			
+	}
 
 }
 
@@ -197,7 +209,7 @@ insert (void *l, Item m)
 char *
 label (void *l)
 {
-
+	
 }
 
 
