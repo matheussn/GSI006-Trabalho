@@ -22,7 +22,8 @@ struct lista
 {
 	char *lb;
 	int qd;
-	ItemL *primeroItem;
+	ItemL *primeiroItem;
+	struct lista *ant;
 	struct lista *prox;
 };
 
@@ -40,7 +41,6 @@ typedef struct d Dir;
 	Dir D;					// Diretorio
 	Lista *L = NULL;		// Lista
 	ItemL *I   = NULL;		// Itens
-
 
 // count
 // -----
@@ -80,8 +80,9 @@ create (char *s)
 
 	aux->lb = s;
 	aux->qd = 0;
+	aux->ant = D.u;
 	aux->prox = NULL;
-	aux->primeroItem = NULL;
+	aux->primeiroItem = NULL;
 
 	if(L == NULL)	//Diretorio vazio
 		L = D.p = D.u = aux;
@@ -100,7 +101,55 @@ create (char *s)
 void *
 destroy (void *l)
 {
+	Lista * aux;
+	ItemL * x = NULL;
 
+	aux = (Lista *) l;
+	if(aux == NULL)
+		return l;
+
+	x = aux->primeiroItem;
+
+	while(x != NULL)
+	{
+		aux->primeiroItem = aux->primeiroItem->prox;
+		
+		if(x->m.nome != NULL)
+			free(x->m.nome);
+
+		free(x);
+		x = aux->primeiroItem;
+	}
+
+	free(aux->lb);
+
+	if(aux->ant == NULL) // caso aux seja a primeira lista
+	{
+		if(aux->prox == aux->ant) // caso aux seja a unica lista
+			D.p = D.u = NULL;
+		else
+		{
+			D.p = aux->prox;
+			D.p->ant = NULL;
+		}
+	}
+	else // caso aux esteja no meio ou no final
+	{
+		if(D.u == aux) // ultima lista
+		{
+			D.u = aux->ant;
+			D.u->prox = NULL;
+		}
+		else// no meio
+		{
+			aux->prox->ant = aux->ant;
+			aux->ant->prox = aux->prox;
+		}
+	}
+
+	free(aux);
+
+	return NULL;
 }
 
 
@@ -113,18 +162,33 @@ Item *
 find (void *l, int m)
 {
 	Lista *aux;
+	ItemL *y;
+	aux = (Lista*) l;
+	if(aux == NULL)
+		return NULL;	
+	
+	Item *x = (Item *) malloc(sizeof(Item));
 
-	aux = (Lista*)l;
+	if(x == NULL)
+		return NULL;
 
-	while(aux!=NULL)
+	x->id = -1;
+	x->nome = NULL;
+
+	y = aux->primeiroItem;
+
+	while(y != NULL)
 	{
-		if(aux->primeroItem->m.id==m)
+		if(y->m.id == m)
 		{
-			printf("retorna");
+			x->id = y->m.id;
+			x->nome = y->m.nome;
+			break;
 		}
-			aux->primeroItem = aux->primeroItem->prox;			
+		y = y->prox;
 	}
-
+	
+	return x;
 }
 
 
@@ -160,45 +224,45 @@ idl (char *s)
 void *
 insert (void *l, Item m)
 {
-    Lista *li = (Lista *)l;
-    ItemL *aux = NULL;
-    ItemL *t;    // ponteiro item corrente
-    ItemL *a;    // ponteiro item anterior
+	Lista *li = (Lista *)l;
+	ItemL *aux = NULL;
+	ItemL *t;    // ponteiro item corrente
+	ItemL *a;    // ponteiro item anterior
 
-    aux = (ItemL*) malloc(sizeof(ItemL));
-        if (aux == NULL)
-        return NULL;
+	aux = (ItemL*) malloc(sizeof(ItemL));
+	if (aux == NULL)
+		return NULL;
 
-    aux->m.id = m.id;
-    aux->m.nome = m.nome;
+	aux->m.id = m.id;
+	aux->m.nome = m.nome;
 
-    for(a = t = li->primeroItem; t != NULL; t = t->prox)
-    {
-        if(t->m.id < aux->m.id)
-            a = t;
-        else
-            break;
-    }
+	for(a = t = li->primeiroItem; t != NULL; t = t->prox)
+	{
+		if(t->m.id < aux->m.id)
+			a = t;
+		else
+			break;
+	}
 
-    if(a == NULL)
-    { //lista vazia
-        aux->prox = NULL;
-        li->primeroItem = aux;
-    }
-    else if(a == t)
-    {
-        aux->prox = li->primeroItem;
-        li->primeroItem = aux;
-    }
-    else
-    {
-      aux->prox = t;
-      a->prox = aux;
-    }
+	if(a == NULL)
+	{ //lista vazia
+		aux->prox = NULL;
+		li->primeiroItem = aux;
+	}
+	else if(a == t)
+	{
+		aux->prox = li->primeiroItem;
+		li->primeiroItem = aux;
+	}
+	else
+	{
+		aux->prox = t;
+		a->prox = aux;
+	}
 
-    li->qd++;
+	li->qd++;
 
-    return li;
+	return li;
 
 }
 
@@ -222,7 +286,7 @@ void *
 showAll (void *l)
 {
 	Lista *aux = (void *)l;
-	ItemL *auxL = aux->primeroItem;
+	ItemL *auxL = aux->primeiroItem;
 
 	if(auxL == NULL)
 	{
