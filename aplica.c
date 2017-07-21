@@ -55,15 +55,16 @@ main ()
 
          case 'u' :
              dir = idl(rl);
-
+				
              if(dir == NULL)
              {
                  fprintf (stderr, "Lista %s nao existe.\n",rl);
                  break;
              }
-
-             else
-                 printf("Quantidade de itens na lista %s: %d", rl, c1);
+				
+			 c1 = count(dir);
+            
+             printf("Quantidade de itens na lista %s: %d\n", rl, c1);
 
              free(rl);
              free(c2);
