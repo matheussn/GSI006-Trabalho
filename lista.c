@@ -50,9 +50,8 @@ typedef struct d Dir;
 int
 count (void * l)
 {
-	Lista *aux;
+	Lista *aux = (Lista*)l;
 
-	aux = idl (l);
 	if (aux == NULL)
 		return -1;
 
