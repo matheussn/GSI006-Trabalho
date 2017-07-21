@@ -272,7 +272,12 @@ insert (void *l, Item m)
 char *
 label (void *l)
 {
-	
+    Lista *aux = (Lista*)l;
+
+	if (aux == NULL)
+		return NULL;
+
+	return aux->lb;
 }
 
 
