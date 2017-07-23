@@ -37,15 +37,13 @@ Tutorial:
 		Os arquivos lista.c e aplica.c devem ser compilados separadamente, deve utilizar gcc para fazer a compilação. O primeiro comando que deve ser aplicado é “gcc lista.c -c”, o próximo passo será compilar o aplica.c, com o comando “gcc aplica.c”. Com isso serão gerados gerados dois arquivos, o aplica.o e lista.o, com esses arquivos no mesmo diretório deve-se realizar o seguinte comando: “gcc *.o -o aplica.exe”, após esses procedimentos o programa já pode ser executado pelo comando ./aplica.exe.
 	
 	Como utilizar:
-		Essa primeira versão do programa apenas cria lista e informas as listas criadas. Para utilização o usuário deve digitar alguns comandos de criar e mostras as listas criadas. São quatro operações que devem ser passadas para o programa, sempre começando com um caractere uma cadeia de caracteres um número e outra cadeia caracteres.  Caso esse padrão não seja respeitado o funcionamento do programa estará comprometida. Abaixo estão listados os comandos aceitados pelo o programa.
-	Exemplo:
-	“c aa -1 NULL” -> Com esse comando cria uma lista com nome de “aa”
-	“s NULL -1 NULL” -> Com esse comando mostra todas a listas criadas.
-
-	Para encerrar o programa deve-se digitar o comando CTRL + d.
+		Nessa segunda versão do programa, é possível criar uma lista dentro de um diretório, mostrar o diretório em que constam as listas, informar o rótulo das listas, procurar um id dentro de uma certa lista, contar a quantidade de itens dentro de uma determinada lista, e, por fim, destruir uma determinada lista. Para utilização, o usuário deve criar um arquivo ".txt" e incluir nele alguns comandos de criar ou inserir ou mostrar ou destruir ou contar ou procurar um id das listas criadas. São seis operações que devem ser passadas para o programa, sempre começando com um caractere uma cadeia de caracteres um número e outra cadeia caracteres.  Caso esse padrão não seja respeitado, o funcionamento do programa estará comprometido. Abaixo estão listados os comandos aceitados pelo o programa.
+	Exemplo de um "arquivo.txt" criado:
+	“c aa -1 NULL” -> Com esse comando, cria-se uma lista com nome de "aa"
+	"i aa 12 Fulano" -> Com esse comando, insere-se na lista "aa" os dados "12 Fulano". 
+	"u aa -1 NULL" -> Com esse comando, é apresentado a quantidade de dados contidos na lista "aa".
+	"s NULL -1 NULL" -> Com esse comando, todas a listas criadas são mostradas.
+	"d aa -1 NULL" -> Com esse comando, a lista "aa" é destruída.
+	"f aa 10 NULL" -> Com esse comando, o id "10" é buscado na lista "aa".
 	
-	Além de digitar diretamente os comandos, o usauário pode enviar um arquivo com extensão .txt para o programa, com o comando "./aplica.exe < nome-do-arquivo.txt"
-	No arquivo .txt as informações devem estar da mesma forma como se fosse digitada diretamente no programa.
-	Exemplo:
-	c aa -1 NULL
-	s NULL -1 NULL
+	Para encerrar o programa deve-se digitar o comando CTRL + d.
