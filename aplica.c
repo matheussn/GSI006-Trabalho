@@ -38,6 +38,7 @@ main ()
 		switch(fn)
 		{
 			case 'c' :
+				fprintf(stdout, "\nFunção create:\n");
 				dir = create(rl);
 				if(dir == NULL)
 					fprintf (stderr, "Erro ao criar a lista %s\n",rl);
@@ -48,29 +49,32 @@ main ()
 				break;
 
 			case 's' :
+				fprintf(stdout, "\nFunção showDir:\n");
 				showDir();
 				free(rl);
 				free(c2);
 				break;
 
          case 'u' :
-             dir = idl(rl);
-				
-             if(dir == NULL)
-             {
-                 fprintf (stderr, "Lista %s nao existe.\n",rl);
-                 break;
-             }
-				
-			 c1 = count(dir);
-            
-             printf("Quantidade de itens na lista %s: %d\n", rl, c1);
+				fprintf(stdout, "\nFunção count:\n");
+				dir = idl(rl);
 
-             free(rl);
-             free(c2);
-             break;
+				if(dir == NULL)
+				{
+				  fprintf (stderr, "Lista %s nao existe.\n",rl);
+				  break;
+				}
+
+				c1 = count(dir);
+
+				printf("Quantidade de itens na lista %s: %d\n", rl, c1);
+
+				free(rl);
+				free(c2);
+				break;
 
          case 'i' :
+				fprintf(stdout, "\nFunção insert:\n");
 				dir = idl(rl);
 				if(dir == NULL)
 				{
@@ -87,24 +91,26 @@ main ()
 				}
 				else
 				{
-					fprintf(stdout,"Item %d %s, inserido com sucesso na lista %s\n", m.id, m.nome, rl);
+					fprintf(stdout,"Item %s com id %d, inserido com sucesso na lista %s\n", m.nome, m.id, rl);
 				}
 				free(rl);
 				break;
 
          case 'w' :
-             dir = idl(rl);
-             if(dir == NULL)
-             {
-                 fprintf (stderr,"Lista %s nao existe.\n",rl);
-                 break;
-             }
-             showAll(dir);
-             free(rl);
-             free(c2);
-             break;
+				fprintf(stdout, "\nFunção showAll:\n");
+				dir = idl(rl);
+				if(dir == NULL)
+				{
+				  fprintf (stderr,"Lista %s nao existe.\n",rl);
+				  break;
+				}
+				showAll(dir);
+				free(rl);
+				free(c2);
+				break;
 
 			case 'f' :
+				fprintf(stdout, "\nFunção find:\n");
 				dir = idl(rl);
 				if(dir == NULL)
 				{
@@ -115,17 +121,18 @@ main ()
 
 				if(n->id == -1)
 				{
-					fprintf(stderr, "Nenhum item foi encontrado com o id %d.\n", c1);
+					fprintf(stderr, "A lista %s nao possui itens com id %d\n", rl, c1);
 				}
 				else
 				{
-					printf("Lista: %s\nID: %d  Descricao: %s\n", rl, n->id, n->nome);
+					printf("Lista: %s\n\tID: %d  Nome: %s\n", rl, n->id, n->nome);
 				}
 				free(rl);
 				free(c2);
 				break;
 
 			case 'd' :
+				fprintf(stdout, "\nFunção destroy:\n");
 				dir = idl(rl);
 				if(dir == NULL)
 				{

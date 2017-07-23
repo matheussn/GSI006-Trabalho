@@ -125,10 +125,10 @@ destroy (void *l)
 	if(aux->ant == NULL) // caso aux seja a primeira lista
 	{
 		if(aux->prox == aux->ant) // caso aux seja a unica lista
-			D.p = D.u = NULL;
+			L = D.p = D.u = NULL;
 		else
 		{
-			D.p = aux->prox;
+			L = D.p = aux->prox;
 			D.p->ant = NULL;
 		}
 	}
@@ -294,12 +294,14 @@ showAll (void *l)
 
 	if(auxL == NULL)
 	{
-		fprintf(stderr, "erro: Nao ha nenhuma lista no diretorio.\n");
+		fprintf(stderr, "Diretorio vazio\n");
 	}
+
+	fprintf(stdout, "Lista: %s\n", aux->lb);
 
 	while(auxL != NULL)
 	{
-		printf("Id: %d Item: %s\n", auxL->m.id, auxL->m.nome);
+		printf("\tId: %d Nome: %s\n", auxL->m.id, auxL->m.nome);
 		auxL = auxL->prox;
 	}
 }
@@ -316,12 +318,13 @@ showDir()
 
 	if(aux==NULL)
 	{
-		fprintf(stderr, "erro: Nao ha nenhuma lista no diretorio.\n");
+		fprintf(stderr, "Diretorio vazio\n");
 	}
-
+	
+	fprintf(stdout,"Diretório Dir\n");
 	while(aux != NULL)
 	{
-		printf("Lista: %s Quantidade: %d\n", aux->lb, aux->qd);
+		printf("\tLista: %s\n\tQuantidade de itens: %d\n", aux->lb, aux->qd);
 		aux = aux->prox;
 	}
 

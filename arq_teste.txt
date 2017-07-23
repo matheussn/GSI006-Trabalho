@@ -4,6 +4,10 @@ s NULL -1 NULL
 i aa 10 Aluno1
 i aa 11 Aluno2
 s NULL -1 NULL
+u aa -1 NULL
+f aa 10 NULL
 w aa -1 NULL
 d aa -1 NULL
 s NULL -1 NULL
+f bb 10 NULL
+u bb -1 NULL
