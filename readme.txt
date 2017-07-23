@@ -34,16 +34,17 @@ label(void *l): A função tem a tarefa de encontrar e retornar o nome do rótul
 Tutorial:
 	
 	Como compilar o programa:
-		Os arquivos lista.c e aplica.c devem ser compilados separadamente, deve utilizar gcc para fazer a compilação. O primeiro comando que deve ser aplicado é “gcc lista.c -c”, o próximo passo será compilar o aplica.c, com o comando “gcc aplica.c”. Com isso serão gerados gerados dois arquivos, o aplica.o e lista.o, com esses arquivos no mesmo diretório deve-se realizar o seguinte comando: “gcc *.o -o aplica.exe”, após esses procedimentos o programa já pode ser executado pelo comando ./aplica.exe.
+		Os arquivos lista.c e aplica.c devem ser compilados separadamente, deve utilizar gcc para fazer a compilação. O primeiro comando que deve ser aplicado é “gcc lista.c -c”, o próximo passo será compilar o aplica.c, com o comando “gcc aplica.c”. Com isso serão gerados gerados dois arquivos, o aplica.o e lista.o, com esses arquivos no mesmo diretório deve-se realizar o seguinte comando: “gcc *.o -o aplica.exe”.
 	
 	Como utilizar:
-		Nessa segunda versão do programa, é possível criar uma lista dentro de um diretório, mostrar o diretório em que constam as listas, informar o rótulo das listas, procurar um id dentro de uma certa lista, contar a quantidade de itens dentro de uma determinada lista, e, por fim, destruir uma determinada lista. Para utilização, o usuário deve criar um arquivo ".txt" e incluir nele alguns comandos de criar ou inserir ou mostrar ou destruir ou contar ou procurar um id das listas criadas. São seis operações que devem ser passadas para o programa, sempre começando com um caractere uma cadeia de caracteres um número e outra cadeia caracteres.  Caso esse padrão não seja respeitado, o funcionamento do programa estará comprometido. Abaixo estão listados os comandos aceitados pelo o programa.
+		Nessa segunda versão do programa, é possível criar uma lista, inserir itens na lista, mostrar o diretório em que constam as listas, procurar um item pelo id dentro de uma certa lista, contar a quantidade de itens dentro de uma determinada lista, e, por fim, destruir uma determinada lista. Para utilização, o usuário deve criar um arquivo ".txt" e incluir nele alguns comandos. São seis operações que devem ser passadas para o programa, sempre começando com um caractere uma cadeia de caracteres um número e outra cadeia caracteres.  Caso esse padrão não seja respeitado, o funcionamento do programa estará comprometido. Abaixo estão listados os comandos aceitados pelo o programa.
 	Exemplo de um "arquivo.txt" criado:
-	“c aa -1 NULL” -> Com esse comando, cria-se uma lista com nome de "aa"
-	"i aa 12 Fulano" -> Com esse comando, insere-se na lista "aa" os dados "12 Fulano". 
-	"u aa -1 NULL" -> Com esse comando, é apresentado a quantidade de dados contidos na lista "aa".
-	"s NULL -1 NULL" -> Com esse comando, todas a listas criadas são mostradas.
-	"d aa -1 NULL" -> Com esse comando, a lista "aa" é destruída.
-	"f aa 10 NULL" -> Com esse comando, o id "10" é buscado na lista "aa".
+	“c aa -1 NULL” -> Cria a lista "aa"
+	"i aa 12 Fulano" -> Insere-se na lista "aa" os dados "12 Fulano". 
+	"u aa -1 NULL" ->  apresenta a quantidade de dados contidos na lista "aa".
+	"s NULL -1 NULL" -> Apresenta todas as listas criadas.
+	"d aa -1 NULL" -> Destroi a lista "aa".
+	"f aa 10 NULL" -> Busca o item cuja chave é 10 na lista "aa".
+	"w aluno -1 NULL" -> Apresenta os dados contidos na lista "aa".
 	
-	Para encerrar o programa deve-se digitar o comando CTRL + d.
+	Na execução do programa é necessário enviar o arquivo .txt criado com os comandos demonstrados acima. O programa deverá ser executado pelo comando "./aplica.exe < nome.txt", com o nome correto do arquivo txt.
