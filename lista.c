@@ -239,6 +239,10 @@ insert (void *l, Item m)
 	{
 		if(t->m.id < aux->m.id)
 			a = t;
+		
+		else if (t->m.id == aux->m.id)
+			return NULL; //id repetido
+		
 		else
 			break;
 	}
