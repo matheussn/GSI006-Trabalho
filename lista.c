@@ -1,5 +1,7 @@
 /*
-	Este arquivo implementa as funções especificadas no arquivo lista.h
+	Este arquivo contém a implementação das operações sobre lista de itens;
+	a lista é implementada com encadeamento duplo. Os itens são 
+	inseridos na calda da lista. Item está definido no arquivo "item.h".
 */
 
 #include <stdio.h>
@@ -23,8 +25,8 @@ struct lista				// Define uma lista duplamente encadeada
 	char *lb;				// Nome da lista
 	int qd;					// Quantidade de itens na lista
 	ItemL *primeiroItem;	// apontador para o primeiro item da lista
-	struct lista *ant;	// Lista anterior
-	struct lista *prox;	//	proxima lista
+	struct lista *ant;		// Lista anterior
+	struct lista *prox;		// proxima lista
 };
 
 typedef struct lista Lista;
@@ -38,9 +40,9 @@ struct d
 typedef struct d Dir;
 
 // === globais ===
-	Dir D;					// Diretorio
-	Lista *L = NULL;		// Lista
-	ItemL *I   = NULL;	// Itens
+	Dir D;				// Diretorio
+	Lista *L = NULL;	// Lista
+	ItemL *I   = NULL;	//Itens
 
 // count
 // -----
@@ -85,7 +87,7 @@ create (char *s)
 
 	if(L == NULL)	//Diretorio vazio
 		L = D.p = D.u = aux;
-	else 				//Diretorio cheio
+	else 			//Diretorio cheio
 		D.u->prox = D.u = aux;
 
 	return L;
@@ -122,9 +124,9 @@ destroy (void *l)
 
 	free(aux->lb);
 
-	if(aux->ant == NULL) // caso aux seja a primeira lista
+	if(aux->ant == NULL)	// Caso aux seja a primeira lista
 	{
-		if(aux->prox == aux->ant) // caso aux seja a unica lista
+		if(aux->prox == aux->ant)	// caso aux seja a unica lista
 			L = D.p = D.u = NULL;
 		else
 		{
