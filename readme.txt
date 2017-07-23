@@ -8,28 +8,26 @@ Trabalho sobre lista encadeada.
 		- Rodrigo Souza Rezende - 11621BSI245
 
 	Os arquivos enviados:
-	. lista.h - Este arquivo contém os protótipos das funções implementadas no arquivo lista.c
+	. item.h - Este arquivo contém a declaração do item da lista.
+	. lista.h - Este arquivo contém os protótipos das funções implementadas no arquivo lista.c.
 	. lista.c - Este arquivo contém a implementação das funções especificadas no arquivo lista.h, nessa etapa do trabalho apenas as funções create, idl e showDir estão finalizadas.
-	. aplica.c - Este arquivo contém um programa simples que permite aplicar operações sobre listas, nessa etapa do trabalho só é possivel criar uma lista, e mostrar o diretório onde elas são salvas.
+	. aplica.c - Este arquivo contém um programa que permite aplicar operações sobre listas.
   
 Como utilizar:
 
-No momento, as funções disponíveis do software são: create(char *s), id1(char *s), showDir(), count(void *l), destroy(void *l), find(void *l, int m) e label(void *l).
+No momento, as funções disponíveis do software são: create(char *s), idl(char *s), showDir(), count(void *l), destroy(void *l), find(void *l, int m) e label(void *l).
 
-create(char *s): A função retorna NULL se a Lista estiver com um nome repetido ou, caso contrário, retorna o ponteiro para a lista criada, cujo rótulo é s.
+create(char *s): A função retorna NULL se não for possivel criar a lista, caso contrário, retorna o ponteiro para a lista criada, cujo rótulo é s.
 
 showDir(): A função mostra todas as listas presentes no diretório. Em caso de não houver nenhuma lista, uma mensagem de erro aparecerá.
 
-id1(char *s): A função tem o objetivo de obter em qual parte do diretório está a lista que possui o rótulo s. Se encontrado, retorna o ponteiro para a lista de itens cujo rótulo é s. Caso contrário, retorna-se NULL.
+idl(char *s): Retorna um ponteiro para a lista de itens cujo rótulo é s, ou retorna NULL, se não existir uma lista com o rótulo s
 
-count(void *l): A função tem o objetivo de retornar a quantidade de itens em l. Caso
-l não seja encontrado, será retornado -1.
+count(void *l): A função tem o objetivo de retornar a quantidade de itens em l. Caso l não seja encontrado, será retornado -1.
 
-destroy(void *l): A função tem a tarefa de destruir a lista l, retornando NULL em caso
-de sucesso ou 1 em caso de falha. 
+destroy(void *l): A função tem a tarefa de destruir a lista l, retornando NULL em caso de sucesso ou 1 em caso de falha. 
 
-find(void *l, int m): A função tem o objetivo de procurar na lista *l o
-id m, retornando, em caso de sucesso, um ponteiro para o item cujo id é m.É retornado NULL se não houver algum item com o id m. 
+find(void *l, int m): A função tem o objetivo de procurar na lista *l o id m, retornando, em caso de sucesso, um ponteiro para o item cujo id é m.É retornado NULL se não houver algum item com o id m. 
 
 label(void *l): A função tem a tarefa de encontrar e retornar o nome do rótulo da lista *l. É retornando NULL se a lista não for encontrada.
 
