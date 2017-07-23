@@ -10,7 +10,7 @@
 
 // === declaracoes ===
 
-struct itemL
+struct itemL	// define um item da lista encadeada
 {
     Item m;
     struct itemL *prox;
@@ -18,21 +18,21 @@ struct itemL
 
 typedef struct itemL ItemL;
 
-struct lista
+struct lista				// Define uma lista duplamente encadeada
 {
-	char *lb;
-	int qd;
-	ItemL *primeiroItem;
-	struct lista *ant;
-	struct lista *prox;
+	char *lb;				// Nome da lista
+	int qd;					// Quantidade de itens na lista
+	ItemL *primeiroItem;	// apontador para o primeiro item da lista
+	struct lista *ant;	// Lista anterior
+	struct lista *prox;	//	proxima lista
 };
 
 typedef struct lista Lista;
 
 struct d
 {
-	Lista *p;
-	Lista *u;
+	Lista *p;	// apontador para a primeira lista
+	Lista *u;	// apontador para a segunda lista
 };
 
 typedef struct d Dir;
@@ -40,7 +40,7 @@ typedef struct d Dir;
 // === globais ===
 	Dir D;					// Diretorio
 	Lista *L = NULL;		// Lista
-	ItemL *I   = NULL;		// Itens
+	ItemL *I   = NULL;	// Itens
 
 // count
 // -----

@@ -1,9 +1,13 @@
+/*
+   Este programa faz uso de operacoes sobre listas. As operacoes
+	estao definidas no arquivo lista.h
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "lista.h"
 
-#define MAXDESCR 30
+#define MAXDESCR 30 // tamanho maximo do nome de um item e nome da lista
 
 int
 main ()
